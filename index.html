@@ -7,63 +7,30 @@
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 background:#111;
 color:white;
-margin:0;
-}
-
-header{
-background:#ff7b00;
-padding:15px;
 text-align:center;
-font-size:25px;
-font-weight:bold;
-}
-
-.banner{
-background:#222;
-padding:40px;
-text-align:center;
-font-size:22px;
-}
-
-.shop{
-display:grid;
-grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-padding:20px;
 }
 
 .box{
-background:#1e1e1e;
-padding:15px;
+background:#222;
+margin:20px;
+padding:20px;
 border-radius:10px;
-text-align:center;
-}
-
-.box img{
-width:100%;
-border-radius:10px;
-}
-
-.price{
-color:#00ff95;
-font-size:20px;
-margin:10px 0;
 }
 
 button{
-background:#ff7b00;
+background:orange;
 border:none;
 padding:10px 20px;
 color:white;
-font-size:16px;
 border-radius:5px;
 }
 
-button:hover{
-background:red;
+input{
+padding:8px;
+margin:5px;
 }
 
 </style>
@@ -71,45 +38,105 @@ background:red;
 
 <body>
 
-<header>
-SHOP ACC FREE FIRE
-</header>
-
-<div class="banner">
-🔥 RANDOM ACC FREE FIRE GIÁ RẺ 🔥
-</div>
-
-<div class="shop">
+<h1>SHOP ACC FREE FIRE</h1>
 
 <div class="box">
-<img src="https://i.imgur.com/L7d6F8G.jpg">
-<h3>Random Acc Thường</h3>
-<div class="price">20.000đ</div>
-<button>MUA NGAY</button>
+
+<h2>Đăng ký</h2>
+
+<input id="user" placeholder="Tên tài khoản">
+
+<input id="pass" placeholder="Mật khẩu">
+
+<button onclick="register()">Đăng ký</button>
+
 </div>
 
 <div class="box">
-<img src="https://i.imgur.com/L7d6F8G.jpg">
-<h3>Random Acc Có Skin</h3>
-<div class="price">50.000đ</div>
-<button>MUA NGAY</button>
+
+<h2>Đăng nhập</h2>
+
+<input id="loginUser" placeholder="Tên tài khoản">
+
+<input id="loginPass" placeholder="Mật khẩu">
+
+<button onclick="login()">Đăng nhập</button>
+
 </div>
 
 <div class="box">
-<img src="https://i.imgur.com/L7d6F8G.jpg">
-<h3>Random Acc VIP</h3>
-<div class="price">100.000đ</div>
-<button>MUA NGAY</button>
+
+<h2>Nạp tiền</h2>
+
+<p>Số Tài Khoản: 0329772293</p>
+<p>Ngân Hàng: MBBank</p>
+<p>Tên: LE NGUYEN TRUNG NAM</p>
+
+<p>Chuyển khoản và ghi nội dung:</p>
+
+<b id="napuser">Tên Tài Khoản</b>
+
 </div>
 
 <div class="box">
-<img src="https://i.imgur.com/L7d6F8G.jpg">
-<h3>Random Acc Siêu Vip</h3>
-<div class="price">200.000đ</div>
-<button>MUA NGAY</button>
-</div>
+
+<h2>Túi mù 49K</h2>
+
+<button onclick="play()">Chơi ngay</button>
 
 </div>
+
+<script>
+
+function register(){
+
+let user=document.getElementById("user").value
+let pass=document.getElementById("pass").value
+
+localStorage.setItem(user,pass)
+
+alert("Đăng ký thành công")
+
+}
+
+function login(){
+
+let user=document.getElementById("loginUser").value
+let pass=document.getElementById("loginPass").value
+
+if(localStorage.getItem(user)==pass){
+
+localStorage.setItem("login",user)
+
+document.getElementById("napuser").innerText=user
+
+alert("Đăng nhập thành công")
+
+}else{
+
+alert("Sai tài khoản")
+
+}
+
+}
+
+function play(){
+
+let user=localStorage.getItem("login")
+
+if(!user){
+
+alert("Bạn cần đăng nhập")
+
+return
+
+}
+
+alert("Mở túi thành công!")
+
+}
+
+</script>
 
 </body>
 </html>
